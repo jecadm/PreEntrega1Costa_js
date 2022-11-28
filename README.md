@@ -9,6 +9,8 @@
 ## Simulador interactivo
 ### Consigna
 - Pensar el alcance de tu proyecto:  un simulador de créditos
+### Préstamos Personales: lo que necesitás saber
+     Monto, Hasta, Tasa, Moneda.
 - Armar la estructura HTML del proyecto.
 - Incorporar lo ejercitado en las clases anteriores, algoritmo condicional y algoritmo con ciclo.
 - Utilizar funciones para realizar esas operaciones.
