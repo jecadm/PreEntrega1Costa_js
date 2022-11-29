@@ -2,140 +2,177 @@
 // Costo Financiero Total (CFT),  TASA de interés
 // El plazo para devolverlo HASTA es iguala la cantidad de cuotas
 
-let  Monto = 0;
+//VARIABLES GLOBALES
+let Monto = 0;
 let tasa = 5;
 let Moneda = "Pesos";
-const  IVA = 21;
-let cuotas = [1,3,6,12,24];
-let cuotasa = []
-let cuotaSinIva = []
-let cuotasFinal = []
+const IVA = 21;
+let cuotas = [1, 3, 6, 12, 24];
+let cuotasa = [];
+let cuotaSinIva = [];
+let cuotasFinal = [];
 let cuotasSelec = 0;
-let totalC = []
-//Cada cuota está formada por tres partes: 
+let totalC = [];
+//Cada cuota está formada por tres partes:
 // Una porción del capital a devolver.
 // Intereses.
 // Impuestos.
 
-
 // SOLICITA MONTO PARA COTIZAR
-monto = parseInt(prompt("Ingrese el monto del prestamos a solicitar: ") )
+monto = parseInt(
+  prompt("Ingrese el monto del préstamos a solicitar: ".toLocaleUpperCase())
+);
 
-while(true){
-    let num = monto;
-/*
-!isNaN(num) = si es diferente de un string osea true
-hasta que sea insertado un numero terminará el ciclo o hasta que se escriba fin
+while (true) {
+  let num = monto;
+  /*
+!isNaN(num) = si es diferente
+hasta que sea insertado un numero terminará el ciclo
 */
-    if(!isNaN(num) && num != null && num != ""){
-        alert(`Exlenete monto, va a solicitar contizacion por $${num}`);
-      break;
-    }else {
-        monto = parseInt(prompt("Solo puede Ingresar un Numeros: ") )
-      continue;
-    }
+  if (!isNaN(num) && num != null && num != "") {
+    alert(
+      `Excelente monto, va a solicitar cotizacion por $${num}`.toLocaleUpperCase()
+    );
+    break;
+  } else {
+    monto = parseInt(
+      prompt("Solo puede Ingresar Números: ".toLocaleUpperCase())
+    );
+    continue;
+  }
 }
 
-
-
-
-
-//  RECORRE EL ARRAY DE TIPOS DE CUOTAS , DIVIDE EL MONTO POR LA CUOTAS Y LES AGREGA EL IVA MAS EL TASA
-const recorreCuotas = (arr) => {
-    for(let i=0; i<=arr.length-1; i++){
-    let cantidadCuotas = (arr[i]);
+// FUNCION RECORRE EL ARRAY DE TIPOS DE CUOTAS , DIVIDE EL MONTO POR LA CUOTAS Y LES AGREGA EL IVA MAS EL TASA
+function recorreCuotas(arr) {
+  for (let i = 0; i <= arr.length - 1; i++) {
+    let cantidadCuotas = arr[i];
     let pagoMes = monto / cantidadCuotas;
-    rest = (pagoMes * tasa)/100;
-    pagoMes = pagoMes + rest ;
-    cuotasa.push(`En ${(arr[i])} Cuotas = $${pagoMes} +IVA
-    `)
-    cuotaSinIva.push(pagoMes)
-
-    }
-    
+    rest = (pagoMes * tasa) / 100;
+    pagoMes = pagoMes + rest;
+    cuotasa.push(`
+   En ${arr[i]} Cuotas = $${pagoMes} +IVA`);
+    cuotaSinIva.push(pagoMes);
   }
+}
+// FUNCIÓN RECORRE EL ARRAY DE TIPOS DE CUOTAS , DIVIDE EL MONTO POR LA CUOTAS Y LES AGREGA EL IVA MÁS EL TASA
 
-  //LLAMAOS AL FOR Y LE PASAMOS EL PARAMETRO DE CUOTAS
+//LLAMANOS AL FOR Y LE PASAMOS EL PARÁMETRO DE CUOTAS
 recorreCuotas(cuotas);
 
-//MOSTRAMOS PARA VALIDACION BORRAR LUEGO
-console.log(cuotaSinIva)
+//MOSTRAMOS PARA VALIDACIÓN BORRAR LUEGO
+console.log(cuotasa);
+console.log(cuotaSinIva);
+//MOSTRAMOS PARA VALIDACIÓN BORRAR LUEGO
 
-console.log(cuotasa)
-//MOSTRAMOS PARA VALIDACION BORRAR LUEGO
+//PARA SUMARLE EL IVA A LAS CUOTAS FUNCIÓN CREADA A PARTIR DE UNA CONST
 
-//PARA SUMARLE EL IVA A LAS CUOTAS
-
-const recorreCuotasIva= (arr) => {
-    for(let i=0; i<=arr.length-1; i++){
-    let pagoxMes = (arr[i]);
-    restFinal = (pagoxMes * IVA)/100;
-    pagoxMes = pagoxMes + restFinal ;
-    cuotasFinal.push(pagoxMes)
-
-    }
-    
+const recorreCuotasIva = (arr) => {
+  for (let i = 0; i <= arr.length - 1; i++) {
+    let pagoxMes = arr[i];
+    restFinal = (pagoxMes * IVA) / 100;
+    pagoxMes = pagoxMes + restFinal;
+    cuotasFinal.push(pagoxMes);
   }
-//PARA SUMARLE EL IVA A LAS CUOTAS
+};
+
+//PARA SUMARLE EL IVA A LAS CUOTAS FUNCIÓN CREADA A PARTIR DE UNA CONST
 
 //LLAMAMOS PARA SUMARLE EL IVA A LAS CUOTAS
-recorreCuotasIva(cuotaSinIva)
+recorreCuotasIva(cuotaSinIva);
 
+//MOSTRAMOS PARA VALIDACIÓN BORRAR LUEGO
+console.log(cuotasFinal);
+//MOSTRAMOS PARA VALIDACIÓN BORRAR LUEGO
 
-//MOSTRAMOS PARA VALIDACION BORRAR LUEGO
-console.log(cuotasFinal)
-//MOSTRAMOS PARA VALIDACION BORRAR LUEGO
+//SELECCIÓN DE CANTIDAD DE CUOTAS
+cuotasSelec = Number(
+  prompt(`Selecciones cantidad de cuotas ${cuotasa}: `.toLocaleUpperCase())
+);
 
-//SELECCION DE CANTIDAD DE CUOTAS
-cuotasSelec = Number (prompt(`Selecciones cantidad de cuotas ${cuotasa}: `))
-
-while(true){
-    let num = cuotasSelec;
-/*
-!isNaN(num) = si es diferente de un string osea true
-hasta que sea insertado un numero terminará el ciclo o hasta que se escriba fin
+while (true) {
+  let num = cuotasSelec;
+  /*
+isNaN(num) =  es igual a
+hasta que sea insertado un número terminará el ciclo o hasta que se escriba fin
 */
-    if(!isNaN(num) && num != null && num != ""){
-        alert(`Exlenete, va a solicitar contizacion por ${num} Cuotas`);
-      break;
-    }else {
-        cuotasSelec= parseInt(prompt(`Selecciones cantidad de cuotas ${cuotasa}: `) )
-      continue;
-    }
+  if (
+    isNaN(num) ||
+    num === 1 ||
+    num === 3 ||
+    num === 6 ||
+    num === 12 ||
+    num === 24
+  ) {
+    alert(
+      `Excelente, va a solicitar cotizacion por "${num}" Cuotas`.toLocaleUpperCase()
+    );
+    break;
+  } else {
+    cuotasSelec = parseInt(
+      prompt(
+        `Solo puedes Seleccionar cantidad de cuotas en pantalla ${cuotasa}: `.toLocaleUpperCase()
+      )
+    );
+    continue;
+  }
 }
 
+let cuotasSuma = 0;
 
+//SWITCH PARA PRESENTAR LOS RESULTADOS DEPENDIENDO DE LAS CUOTAS SELECCIONADAS.
 
- let cuotasSuma = 0;
+switch (cuotasSelec) {
+  //podría haber usado en los multiplicadores la variable cuotaSelec pero me gusto asi.
 
-
-
-console.log(cuotasFinal[1])
-
-//SWITCH PARA PRESENTATAR LOS RESULTADOS DEPENDIENDO DE LAS CUOTAS SELECCIONADAD. 
-
-  switch(cuotasSelec){
-
-    //podria haber usado en los multiplicaodres la variable cuotaSelec pero me gusto asi.
-
-    case 1: 
-        alert(`Vas a pagar un total de ${cuotasFinal[0] * 1} en ${cuotasSelec} Cuotas de ${cuotasFinal[0]} Final `)
-        break;
-    case 3:
-        alert(`Vas a pagar un total de ${cuotasFinal[1] * 3} en ${cuotasSelec} Cuotas de ${cuotasFinal[1]} Final`)
-        break;
-    case 6: 
-        alert(`Vas a pagar un total de ${cuotasFinal[2] * 6} en ${cuotasSelec} Cuotas de ${cuotasFinal[2]} Final`)
-        break;
-    case 12: 
-        alert(`Vas a pagar un total de ${cuotasFinal[3] * 12} en ${cuotasSelec} Cuotas de ${cuotasFinal[3]} Final`)
-        break;
-    case 24: 
-        alert(`Vas a pagar un total de ${cuotasFinal[4] * 24} en ${cuotasSelec} Cuotas de ${cuotasFinal[4]} Final`)
-        break; 
-    default:
-        cuotasSelec = alert('Selecciones SOLO delas siguiente OPCIONES:  1 , 3, 6, 12, 24:  VULEVA a iniviar el proceso');
-        break;
-
-  }
-    
+  case 1:
+    alert(
+      `Vas a pagar un total de $${
+        cuotasFinal[0] * 1
+      }.- en ${cuotasSelec} Cuotas de $${
+        cuotasFinal[0]
+      }.- Final `.toLocaleUpperCase()
+    );
+    break;
+  case 3:
+    alert(
+      `Vas a pagar un total de $${
+        cuotasFinal[1] * 3
+      }.- en ${cuotasSelec} Cuotas de $${
+        cuotasFinal[1]
+      }.- Final`.toLocaleUpperCase()
+    );
+    break;
+  case 6:
+    alert(
+      `Vas a pagar un total de $${
+        cuotasFinal[2] * 6
+      }.- en ${cuotasSelec} Cuotas de $${
+        cuotasFinal[2]
+      }.- Final`.toLocaleUpperCase()
+    );
+    break;
+  case 12:
+    alert(
+      `Vas a pagar un total de $${
+        cuotasFinal[3] * 12
+      }.- en ${cuotasSelec} Cuotas de $${
+        cuotasFinal[3]
+      }.- Final`.toLocaleUpperCase()
+    );
+    break;
+  case 24:
+    alert(
+      `Vas a pagar un total de $${
+        cuotasFinal[4] * 24
+      }.- en ${cuotasSelec} Cuotas de $${
+        cuotasFinal[4]
+      }.- Final`.toLocaleUpperCase()
+    );
+    break;
+  default:
+    cuotasSelec = alert(
+      "No ha seleccionado nada: Si lo desea puede volver a intentar el proceso".toLocaleUpperCase()
+    );
+    break;
+}
+//SWITCH PARA PRESENTAR LOS RESULTADOS DEPENDIENDO DE LAS CUOTAS SELECCIONADAS.
