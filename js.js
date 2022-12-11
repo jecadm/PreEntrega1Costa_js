@@ -3,9 +3,9 @@
 // El plazo para devolverlo HASTA es iguala la cantidad de cuotas
 
 //VARIABLES GLOBALES
-let Monto = 0;
+let monto = 0;
 let tasa = 5;
-let Moneda = "Pesos";
+let moneda = "Pesos";
 const IVA = 21;
 let cuotas = [1, 3, 6, 12, 24];
 let cuotasa = [];
@@ -176,3 +176,14 @@ switch (cuotasSelec) {
     break;
 }
 //SWITCH PARA PRESENTAR LOS RESULTADOS DEPENDIENDO DE LAS CUOTAS SELECCIONADAS.
+function Prestamo()
+{
+  this.nombre = nombre;
+  this.monto = monto;
+  
+this.tasa = tasa;
+this.moneda = moneda;
+this.iva = IVA;
+this.cuotas = [1, 3, 6, 12, 24];
+this.cuotasa = cuotas
+}
