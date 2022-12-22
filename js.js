@@ -176,3 +176,14 @@ switch (cuotasSelec) {
     break;
 }
 //SWITCH PARA PRESENTAR LOS RESULTADOS DEPENDIENDO DE LAS CUOTAS SELECCIONADAS.
+function Prestamo()
+{
+  this.nombre = nombre;
+  this.monto = monto;
+  
+this.tasa = tasa;
+this.moneda = moneda;
+this.iva = IVA;
+this.cuotas = [1, 3, 6, 12, 24];
+this.cuotasa = cuotas
+}
